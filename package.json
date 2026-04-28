@@ -1,0 +1,10 @@
+﻿{
+  "name": "com.vladislavtsurikov.megaworld.texturebrushtool",
+  "version": "1.0.0",
+  "displayName": "VladislavTsurikov.MegaWorld.TextureBrushTool",
+  "unity": "2021.3",
+  "description": "UPM package for VladislavTsurikov MegaWorld TextureBrushTool.",
+  "dependencies": {
+    "com.vladislavtsurikov.megaworld.core": "1.0.0"
+  }
+}
