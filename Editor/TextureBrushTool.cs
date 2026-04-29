@@ -31,13 +31,14 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
     [MegaWorldDocUrl("tools/texture-brush")]
     public class TextureBrushTool : ToolWindow
     {
-        private readonly StampTerrainAreaResolver _stampTerrainAreaResolver = new();
+        private StampTerrainAreaResolver _stampTerrainAreaResolver;
         private BrushSettings _brushSettings;
         private SpacingMouseMove _mouseMove = new();
         private TextureBrushToolSettings _textureBrushToolSettings;
 
         protected override void OnEnable()
         {
+            _stampTerrainAreaResolver = new StampTerrainAreaResolver();
             _textureBrushToolSettings =
                 (TextureBrushToolSettings)ToolsComponentStack.GetElement(typeof(TextureBrushTool),
                     typeof(TextureBrushToolSettings));
