@@ -7,6 +7,7 @@ using VladislavTsurikov.MegaWorld.Runtime.Common.Area;
 using VladislavTsurikov.MegaWorld.Runtime.Common.Settings;
 using VladislavTsurikov.MegaWorld.Runtime.Common.Settings.FilterSettings.MaskFilterSystem;
 using VladislavTsurikov.MegaWorld.Runtime.Common.Stamper;
+using VladislavTsurikov.MegaWorld.Runtime.Common.Utility.Spawn;
 using VladislavTsurikov.MegaWorld.Runtime.Core;
 using VladislavTsurikov.MegaWorld.Runtime.Core.GlobalSettings.ElementsSystem;
 using VladislavTsurikov.MegaWorld.Runtime.Core.SelectionDatas.Attributes;
@@ -30,10 +31,10 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
     [MegaWorldDocUrl("tools/texture-brush")]
     public class TextureBrushTool : ToolWindow
     {
-        private TextureBrushToolSettings _textureBrushToolSettings;
+        private readonly StampTerrainAreaResolver _stampTerrainAreaResolver = new();
         private BrushSettings _brushSettings;
         private SpacingMouseMove _mouseMove = new();
-        private readonly StampTerrainAreaResolver _stampTerrainAreaResolver = new();
+        private TextureBrushToolSettings _textureBrushToolSettings;
 
         protected override void OnEnable()
         {
@@ -58,7 +59,7 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
 
         protected override void HandleKeyboardEvents()
         {
-            var brushSettings =
+            BrushSettings brushSettings =
                 (BrushSettings)ToolsComponentStack.GetElement(typeof(TextureBrushTool), typeof(BrushSettings));
             brushSettings.ScrollBrushRadiusEvent();
         }
@@ -115,7 +116,7 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
                     continue;
                 }
 
-                Runtime.Common.Utility.Spawn.TerrainTextureSpawner.SpawnArea(group, group.GetAllSelectedPrototypes(),
+                TerrainTextureSpawner.SpawnArea(group, group.GetAllSelectedPrototypes(),
                     terrainArea, _textureBrushToolSettings.TextureTargetStrength);
             }
         }

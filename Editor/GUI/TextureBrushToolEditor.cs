@@ -8,7 +8,10 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
     [ElementEditor(typeof(TextureBrushTool))]
     public class TextureBrushToolEditor : ToolWindowEditor
     {
-        public override void DrawButtons() => UndoEditor.DrawButtons(TargetType, WindowData.Instance.SelectedData);
+        public override void DrawButtons()
+        {
+            UndoEditor.DrawButtons(TargetType, WindowData.Instance.SelectedData);
+        }
     }
 }
 #endif

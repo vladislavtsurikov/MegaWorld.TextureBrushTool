@@ -4,8 +4,6 @@ using VladislavTsurikov.Core.Editor;
 using VladislavTsurikov.IMGUIUtility.Editor;
 using VladislavTsurikov.IMGUIUtility.Editor.ElementStack;
 using VladislavTsurikov.IMGUIUtility.Editor.ElementStack.ReorderableList;
-using VladislavTsurikov.MegaWorld.Editor.Common;
-using VladislavTsurikov.MegaWorld.Editor.Core.Window;
 
 namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
 {
@@ -15,7 +13,10 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
     {
         private TextureBrushToolSettings _settings;
 
-        public override void OnEnable() => _settings = (TextureBrushToolSettings)Target;
+        public override void OnEnable()
+        {
+            _settings = (TextureBrushToolSettings)Target;
+        }
 
         public override void OnGUI()
         {
