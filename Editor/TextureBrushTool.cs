@@ -109,16 +109,10 @@ namespace VladislavTsurikov.MegaWorld.Editor.TextureBrushTool
         {
             _stampTerrainAreaResolver.RefreshCells(area.Bounds);
 
-            foreach (StampTerrainArea stampArea in _stampTerrainAreaResolver.StampAreas)
+            foreach (BoxArea stampArea in _stampTerrainAreaResolver.StampAreas)
             {
-                BoxArea terrainArea = _stampTerrainAreaResolver.CreateBoxArea(area, stampArea);
-                if (terrainArea == null)
-                {
-                    continue;
-                }
-
                 TerrainTextureSpawner.SpawnArea(group, group.GetAllSelectedPrototypes(),
-                    terrainArea, _textureBrushToolSettings.TextureTargetStrength);
+                    area, _textureBrushToolSettings.TextureTargetStrength, stampArea.TerrainUnder);
             }
         }
     }
